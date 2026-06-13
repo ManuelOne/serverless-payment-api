@@ -30,3 +30,27 @@ The system uses:
 ## API Usage
 
 **Endpoint:**
+
+POST https://1d4fg23413.execute-api.us-east-1.amazonaws.com/prod/payments
+
+
+---
+
+## Example Request
+
+```json
+{
+  "reference": "TXN1001",
+  "timestamp": "2026-06-13T12:00:00Z",
+  "sender": "John Doe",
+  "recipient": "Jane Doe",
+  "amount": 5000
+}
+
+Technologies Used
+AWS Lambda
+API Gateway
+DynamoDB
+SNS
+Python 3.12
+CloudWatch
