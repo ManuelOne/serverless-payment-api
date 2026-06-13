@@ -1,0 +1,60 @@
+openapi: 3.0.0
+
+info:
+  title: Serverless Payment API
+  version: 1.0.0
+  description: API for processing payments using AWS Lambda and DynamoDB
+
+servers:
+  - url: https://your-api-id.execute-api.us-east-1.amazonaws.com/prod
+
+paths:
+  /payments:
+    post:
+      summary: Process a payment transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reference
+                - timestamp
+                - sender
+                - recipient
+                - amount
+              properties:
+                reference:
+                  type: string
+                  example: TXN1001
+                timestamp:
+                  type: string
+                  example: 2026-06-13T12:00:00Z
+                sender:
+                  type: string
+                  example: John Doe
+                recipient:
+                  type: string
+                  example: Jane Doe
+                amount:
+                  type: number
+                  example: 5000
+
+      responses:
+        "200":
+          description: Payment processed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Payment processed successfully
+
+        "400":
+          description: Invalid request
+
+        "500":
+          description: Internal server error
